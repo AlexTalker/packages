@@ -1,0 +1,6 @@
+src/
+pkg/
+.AURINFO
+*.pkg.tar.xz
+*.src.tar.xz
+visual-paradigm-community*.tar.gz
