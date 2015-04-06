@@ -6,24 +6,24 @@
 # (Original) Inspiration: Gustavo Dutra <mechamo@gustavodutra.com>
 # Contributor: RunningDroid <rningdrd at tormail dot org>
 
-pkgname="aurora-pentadactyl-hg"
+pkgname="aurora-pentadactyl-git"
 _pkgname="pentadactyl"
 license=(MIT)
-pkgver=7162.4105bdfabbb9
+pkgver=pentadactyl.1.1.r97.g3c682b6
 pkgver() {
-    cd "$srcdir/$_pkgname"
-    echo $(hg identify -n).$(hg identify -i)
+      cd "$_pkgname"
+      git describe --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 pkgrel=1
 pkgdesc="Vim-like five-fingered interface for Firefox"
 arch=(any)
-url="http://dactyl.sourceforge.net/pentadactyl"
+url="https://github.com/5digits/dactyl/"
 depends=()
 optdepends=("firefox")
-makedepends=("coreutils" "mercurial" "sh" "zip" "unzip")
-provides=("pentadactyl")
-conflicts=("pentadactyl")
-source=("$_pkgname::hg+https://dactyl.googlecode.com")
+makedepends=("coreutils" "git" "sh" "zip" "unzip")
+provides=("pentadactyl" "aurora-pentadactyl-hg")
+conflicts=("pentadactyl" "aurora-pentadactyl-hg")
+source=("$_pkgname::git+https://github.com/5digits/dactyl.git")
 md5sums=('SKIP')
 
 build() {
